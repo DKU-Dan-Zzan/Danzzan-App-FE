@@ -1,5 +1,7 @@
 /* 전역 전용 파일 */
 
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
