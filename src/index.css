@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* 경고는 뜨나 기능상 문제는 없음 
+혹시 거슬릴 경우 setting에 관련 경고 ignore 추가하면 됨*/
 @theme {
   --color-primary: #0a559c;
 }
