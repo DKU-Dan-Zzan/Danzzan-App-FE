@@ -1,5 +1,8 @@
+import { ENV } from "../../../config/env"
+
 import PosterCarousel, { type Poster } from "./components/PosterCarousel"
 import EmergencyNotice, { type EmergencyNoticeData } from "./components/EmergencyNotice"
+import TicketingCtaCard from "./components/TicketingCtaCard"
 
 const dummyPosters: Poster[] = [
   { id: "p1", imageUrl: "/posters/dummy1.jpg", alt: "2026 단국축제 포스터 1" },
@@ -16,6 +19,12 @@ const mockEmergencyNotice: EmergencyNoticeData = {
   isActive: true,
 }
 
+const ticketingCta = {
+  title: "단국존 티켓 (예매/확인)",
+  subtitle: "지금 바로 티켓을 확보하세요 ✨",
+  href: ENV.TICKETING_URL,
+}
+
 function Home() {
   return (
     <div className="pb-[100px]">
@@ -24,8 +33,8 @@ function Home() {
       />
 
       <EmergencyNotice notice={mockEmergencyNotice} />
-
-      {/* 아래 홈 섹션들... */}
+      <TicketingCtaCard data={ticketingCta} />
+      
     </div>
   )
 }
