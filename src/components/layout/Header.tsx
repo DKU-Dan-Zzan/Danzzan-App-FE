@@ -11,7 +11,7 @@ const Header = () => {
         <img
           src="/DAN-ZZAN.png"
           alt="DAN-ZZAN"
-          className="h-7 object-contain select-none"
+          className="h-11 object-contain select-none"
           draggable={false}
         />
       </div>
