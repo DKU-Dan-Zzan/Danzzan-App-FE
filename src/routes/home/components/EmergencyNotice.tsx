@@ -1,10 +1,10 @@
-import { AlertCircle } from "lucide-react"
+import { Megaphone  } from "lucide-react"
 
 export interface EmergencyNoticeData {
   id: number
   title: string
   content: string
-  isActive: boolean
+  createdAt?: string
 }
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const EmergencyNotice = ({ notice }: Props) => {
-  if (!notice || !notice.isActive) return null
+  if (!notice) return null
 
   return (
     <section className="px-4 mt-4">
@@ -29,17 +29,29 @@ const EmergencyNotice = ({ notice }: Props) => {
         {/* 왼쪽 포인트 바 */}
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-l-[20px]" />
 
-        <div className="ml-2 mt-0.5 text-primary">
-          <AlertCircle size={20} strokeWidth={2.2} />
-        </div>
+        {/* 오른쪽 상단 시간 */}
+        {notice.createdAt && (
+          <div className="absolute top-3 right-4 text-[11px] text-gray-500">
+            {notice.createdAt}
+          </div>
+        )}
 
-        <div className="flex flex-col">
-          <span className="font-semibold text-[14px] text-primary">
-            {notice.title}
-          </span>
-          <span className="mt-1 text-[13px] leading-relaxed text-gray-700">
-            {notice.content}
-          </span>
+        <div className="flex items-start gap-3 ml-2">
+          {/* 아이콘 */}
+          <div className="mt-0.5 text-primary">
+            <Megaphone size={20} strokeWidth={2.2} />
+          </div>
+
+          {/* 텍스트 */}
+          <div className="flex flex-col pr-16">
+            <span className="font-semibold text-[14px] text-primary">
+              {notice.title}
+            </span>
+
+            <span className="mt-1 text-[13px] leading-relaxed text-gray-700">
+              {notice.content}
+            </span>
+          </div>
         </div>
       </div>
     </section>

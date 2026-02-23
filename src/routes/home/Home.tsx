@@ -68,7 +68,7 @@ function Home() {
           id: noticeResult.value.id,
           title: "긴급 공지",
           content: noticeResult.value.content,
-          isActive: Boolean(noticeResult.value.content?.trim()),
+          createdAt: noticeResult.value.createdAt,
         })
       } else {
         // null 반환 or 실패 -> 숨김
