@@ -1,7 +1,7 @@
 export type Performance = {
   performanceId: number
-  startTime: string // "HH:mm"
-  endTime: string   // "HH:mm"
+  startTime: string
+  endTime: string
   artistId: number
   artistName: string
   artistImage: string | null
@@ -9,7 +9,8 @@ export type Performance = {
   stage: string | null
 }
 
-export type FestivalDate = {
+export type FestivalDay = {
   key: "DAY-1" | "DAY-2" | "DAY-3"
-  date: string // "YYYY-MM-DD"
+  label: "1일차" | "2일차" | "3일차"
+  date: string // YYYY-MM-DD
 }

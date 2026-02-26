@@ -1,16 +1,16 @@
-import type { FestivalDate } from "../timetable.types"
+import type { FestivalDay } from "../timetable.types"
 
 export default function DayTabs({
   days,
   activeIndex,
   onChange,
 }: {
-  days: FestivalDate[]
+  days: FestivalDay[]
   activeIndex: number
   onChange: (idx: number) => void
 }) {
   return (
-    <div className="mt-4 bg-white/15 rounded-2xl p-1 flex">
+    <div className="rounded-2xl border border-gray-200 bg-gray-50 p-1 flex">
       {days.map((d, idx) => {
         const active = idx === activeIndex
         return (
@@ -19,7 +19,9 @@ export default function DayTabs({
             onClick={() => onChange(idx)}
             className={[
               "flex-1 h-11 rounded-xl text-sm font-semibold transition",
-              active ? "bg-white text-blue-700 shadow" : "text-white/80 hover:text-white",
+              active
+                ? "bg-white text-blue-600 shadow-sm"
+                : "text-gray-500 hover:text-gray-800",
             ].join(" ")}
           >
             {d.key}

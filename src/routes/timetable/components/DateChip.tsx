@@ -9,7 +9,7 @@ function formatKoreanDate(dateStr: string) {
 
 export default function DateChip({ date }: { date: string }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 px-4 py-3 text-sm font-semibold text-gray-800">
+    <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-[0_1px_0_rgba(0,0,0,0.02)]">
       {formatKoreanDate(date)}
     </div>
   )
