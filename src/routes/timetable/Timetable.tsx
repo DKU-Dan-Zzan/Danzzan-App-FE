@@ -4,6 +4,8 @@ import DateChip from "./components/DateChip"
 import Timeline from "./components/Timeline"
 import type { FestivalDay, Performance } from "./timetable.types"
 
+import { InformationCircleIcon } from "@heroicons/react/24/outline"
+
 const FESTIVAL_DAYS: FestivalDay[] = [
   { key: "DAY-1", label: "1일차", date: "2026-05-12" },
   { key: "DAY-2", label: "2일차", date: "2026-05-13" },
@@ -70,7 +72,7 @@ export default function Timetable() {
   const items = MOCK_BY_DATE[activeDate] ?? []
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* 상단 영역(화이트, 붙어있는 레이아웃) */}
       <div className="bg-white">
         <div className="px-5 pt-5 pb-4">
@@ -92,7 +94,16 @@ export default function Timetable() {
         {items.length === 0 ? (
           <div className="py-12 text-center text-gray-400">등록된 공연이 없습니다.</div>
         ) : (
-          <Timeline items={items} />
+          <>
+            <Timeline items={items} />
+
+            <div className="mt-10 rounded-2xl bg-blue-50 border border-blue-100 px-4 py-3 flex items-start gap-2">
+            <InformationCircleIcon className="w-5 h-5 text-blue-600 mt-0.5" />
+            <p className="text-sm text-blue-700 font-medium">
+              일정은 현장 상황에 따라 변경될 수 있습니다.
+            </p>
+          </div>
+          </>
         )}
       </div>
     </div>

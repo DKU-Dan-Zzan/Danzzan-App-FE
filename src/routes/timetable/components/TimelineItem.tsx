@@ -1,4 +1,3 @@
-import { useState } from "react"
 import type { Performance } from "../timetable.types"
 
 export default function TimelineItem({
@@ -8,28 +7,32 @@ export default function TimelineItem({
   item: Performance
   isLast: boolean
 }) {
-  const [open, setOpen] = useState(false)
   const timeRange = `${item.startTime} ~ ${item.endTime}`
 
   return (
     <li className="relative flex gap-4">
       {/* 좌측 시간 */}
       <div className="w-16 flex flex-col items-center">
-        <div className="text-[16px] font-extrabold tabular-nums text-blue-600">
+        <div className="text-[16px] font-extrabold tabular-nums text-gray-900">
           {item.startTime}
         </div>
       </div>
 
-      {/* 라인 */}
+      {/* 라인: 마지막이어도 세로선 유지 */}
       <div className="relative w-6 flex justify-center">
         <div className="mt-2 w-2.5 h-2.5 rounded-full bg-blue-600" />
-        {!isLast && <div className="absolute top-4 bottom-0 w-px bg-gray-200" />}
+        {/* 항상 그리기 (마지막은 살짝 연하게 하고 싶으면 opacity만 조절) */}
+        <div
+          className={`absolute top-4 bottom-0 w-px border-l border-dashed border-blue-400 ${
+            isLast ? "opacity-40" : "opacity-100"
+          }`}
+        />
       </div>
 
       {/* 콘텐츠 영역 */}
       <div className="flex-1 pb-6">
-        {/* 이미지 (히어로 느낌) */}
-        <div className="w-40 overflow-hidden rounded-3xl bg-gray-100">
+        {/* 이미지 */}
+        <div className="w-40 overflow-hidden rounded-3xl bg-gray-100 border border-gray-200">
           <img
             src={item.artistImage ?? "/placeholder-artist.png"}
             alt=""
@@ -41,27 +44,20 @@ export default function TimelineItem({
           />
         </div>
 
-        {/* 텍스트 영역 */}
-        <div className="mt-3">
-          <div className="text-lg font-extrabold text-gray-900">
+        {/* 텍스트 영역: 하얀 박스(미니 카드) */}
+        <div className="mt-3 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <div className="text-[15px] font-extrabold text-gray-900">
             {item.artistName}
           </div>
 
           <div className="mt-1 text-sm text-gray-500 tabular-nums">
             {timeRange}
-            {item.stage && (
-              <span className="ml-2">· {item.stage}</span>
-            )}
+            {item.stage && <span className="ml-1">· {item.stage}</span>}
           </div>
 
           {item.artistDescription && (
             <div className="mt-2">
-              <p
-                className={[
-                  "text-sm text-gray-600 leading-relaxed",
-                  open ? "" : "max-h-10 overflow-hidden",
-                ].join(" ")}
-              >
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {item.artistDescription}
               </p>
             </div>
