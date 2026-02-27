@@ -24,12 +24,12 @@ export default function Timeline({
       const el = itemRefs.current[scrollTargetId]
 
       if (el) {
-        // ✅ DOM 확정된 상태에서 스크롤
+        // DOM 확정된 상태에서 스크롤
         el.scrollIntoView({ behavior: "smooth", block: "center" })
         return
       }
 
-      // ✅ ref가 아직 없으면 몇 번 더 재시도
+      // ref가 아직 없으면 몇 번 더 재시도
       tries += 1
       if (tries < 6) requestAnimationFrame(tryScroll)
     }

@@ -186,9 +186,9 @@ export default function Timetable() {
   }
 
   return (
-    // ✅ 페이지 전체는 고정 높이 + column
+    // 페이지 전체는 고정 높이 + column
     <div className="h-screen bg-white flex flex-col">
-      {/* ✅ 상단 고정 영역 */}
+      {/* 상단 고정 영역 */}
       <div className="sticky top-0 z-20 bg-white">
         <div className="px-5 pt-5">
           <div className="text-[38px] font-extrabold text-blue-600 font-cute">
@@ -206,7 +206,7 @@ export default function Timetable() {
         </div>
       </div>
 
-      {/* ✅ 여기부터만 스크롤 */}
+      {/* 여기부터만 스크롤 */}
       <div className="flex-1 overflow-y-auto scrollbar-hide px-5 pt-4 pb-[calc(84px+env(safe-area-inset-bottom))]">
         {/* 날짜칩 */}
         <DateChip date={activeDate} />

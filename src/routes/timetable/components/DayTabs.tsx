@@ -21,13 +21,13 @@ export default function DayTabs({
               onClick={() => onChange(idx)}
               className={[
                 "relative justify-self-center",
-                "px-3 py-2", // ✅ 터치영역 확보
+                "px-3 py-2",
                 "text-xl tracking-wide transition-colors",
                 active ? "text-blue-700 font-extrabold" : "text-gray-400 hover:text-gray-600",
               ].join(" ")}
             >
 
-              {/* 커진 느낌은 scale로 (레이아웃 영향 없음) */}
+              {/* 커진 느낌 scale로 */}
               <span
                 className={
                   active
