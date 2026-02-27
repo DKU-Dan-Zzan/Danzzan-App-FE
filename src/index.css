@@ -6,6 +6,19 @@
   --color-primary: #0a559c;
 }
 
+:root {
+  --bg-base: #f8fafc;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --accent: #0a559c;
+  --border-base: #e2e8f0;
+  --surface-subtle: #f1f5f9;
+  --shadow-color: rgba(10, 85, 156, 0.15);
+  --status-danger-bg: #fef2f2;
+  --status-danger-border: #fecaca;
+  --status-danger-text: #b91c1c;
+}
+
 .font-cute {
   font-family: "Jua", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
 }
