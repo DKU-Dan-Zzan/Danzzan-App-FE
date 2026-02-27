@@ -4,6 +4,7 @@ import { ENV } from "../../../config/env"
 import PosterCarousel, { type Poster } from "./components/PosterCarousel"
 import EmergencyNotice, { type EmergencyNoticeData } from "./components/EmergencyNotice"
 import TicketingCtaCard from "./components/TicketingCtaCard"
+import Footer from "../../components/layout/Footer"
 
 import { getEmergencyNotice, getHomeImages } from "../../api/homeApi"
 
@@ -87,7 +88,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="pb-6">
+    <div>
       {/* 에러 표시 */}
       {error && (
         <div className="px-4 mt-3 text-xs text-red-600">
@@ -109,6 +110,10 @@ function Home() {
           로딩 중...
         </div>
       )}
+
+      <div className="mt-16 pb-[calc(84px+env(safe-area-inset-bottom))]">
+        <Footer />
+      </div>
     </div>
   )
 }

@@ -26,14 +26,6 @@ export default function DayTabs({
                 active ? "text-blue-700 font-extrabold" : "text-gray-400 hover:text-gray-600",
               ].join(" ")}
             >
-              {/* 선택 배경 하이라이트(레이아웃 영향 없음) */}
-              {active && (
-                <span
-                  aria-hidden="true"
-                  className="absolute -inset-x-2 -inset-y-1 rounded-xl bg-blue-50"
-                  style={{ zIndex: -1 }}
-                />
-              )}
 
               {/* 커진 느낌은 scale로 (레이아웃 영향 없음) */}
               <span
@@ -55,7 +47,7 @@ export default function DayTabs({
 
       {/* 밑줄 */}
       <div
-        className="absolute bottom-0 h-[3px] rounded-full bg-blue-700 transition-[left] duration-200"
+        className="absolute bottom-0 h-[4px] rounded-full bg-blue-700 transition-[left] duration-200"
         style={{
           left: `${(100 / days.length) * activeIndex}%`,
           width: `${100 / days.length}%`,

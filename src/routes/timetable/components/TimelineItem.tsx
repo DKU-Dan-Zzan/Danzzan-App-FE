@@ -3,14 +3,18 @@ import type { Performance } from "../timetable.types"
 export default function TimelineItem({
   item,
   isLast,
+  innerRef,
+  showNow,
 }: {
   item: Performance
   isLast: boolean
+  innerRef?: (el: HTMLLIElement | null) => void
+  showNow?: boolean
 }) {
   const timeRange = `${item.startTime} ~ ${item.endTime}`
 
   return (
-    <li className="relative flex gap-4">
+    <li ref={innerRef} className="relative flex gap-4 scroll-mt-24">
       {/* 좌측 시간 */}
       <div className="w-16 flex flex-col items-center">
         <div className="text-[16px] font-extrabold tabular-nums text-gray-900">
@@ -20,7 +24,17 @@ export default function TimelineItem({
 
       {/* 라인: 마지막이어도 세로선 유지 */}
       <div className="relative w-6 flex justify-center">
-        <div className="mt-2 w-2.5 h-2.5 rounded-full bg-blue-600" />
+        {/* NOW 점/라벨 */}
+        <div className="relative mt-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+
+          {showNow && (
+            <span className="absolute -top-2 left-4 whitespace-nowrap rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-extrabold text-white shadow-sm">
+              NOW
+            </span>
+          )}
+        </div>
+
         {/* 항상 그리기 (마지막은 살짝 연하게 하고 싶으면 opacity만 조절) */}
         <div
           className={`absolute top-4 bottom-0 w-px border-l border-dashed border-blue-400 ${
@@ -38,8 +52,7 @@ export default function TimelineItem({
             alt=""
             className="h-32 w-40 object-cover"
             onError={(e) => {
-              ;(e.currentTarget as HTMLImageElement).src =
-                "/placeholder-artist.png"
+              ;(e.currentTarget as HTMLImageElement).src = "/placeholder-artist.png"
             }}
           />
         </div>
